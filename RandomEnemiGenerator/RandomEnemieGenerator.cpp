@@ -2,7 +2,7 @@
 #include<string>
 #include<ctime>
 
-enum class EnemyType { ZOMBIE, VAMPIRE,GHOST,WITCH,MAX }; // MAX para saber el ultimo a la hora de hacer un random
+enum class EnemyType { ZOMBIE, VAMPIRE,GHOST,WITCH,MAX }; // Max para saber el ultimo a la hora de hacer un random
 
 struct Enemy 
 {
@@ -41,12 +41,21 @@ bool operator == (const Enemy &Malo1, const Enemy &Malo2) // Sobrecarga delm ope
 
 Enemy CreateRandomEnemy() // Retorna un enemigo random
 {
-	static const int MAX_LIFE{ 500 }; // Maxima vida que tendran los enemigos
-	static const std::string NAMES[]{"PACO","ELDRICH", "JACINO", "ABICHUELO", "VISUALSTUDIO", "THNDERCLAW"}; // Lista de los posibles nombres de los enemigos
+	static const int MAX_LIFE{ 500 }; // Maxima vida que tendran los enemigos / const(C++) != #define (C)
+	static const std::string NAMES[]{"STORMBIRD","ELDRICH", "JACINO", "ABICHUELO", "VISUALSTUDIO", "THNDERCLAW"}; // Lista de los posibles nombres de los enemigos
+
+	return Enemy // devuelve un enemigo con valores random
+	{
+		// FORMA DE TONA // return Enemy {... , ... , ...} los atributos de el struct
+		static_cast <EnemyType>(rand() % static_cast<int>(EnemyType:: MAX)),
+		NAMES[rand() % (sizeof NAMES / sizeof std::string)], rand() % MAX_LIFE
+		// la division de el sizeof de la array i de el size of de el strng da el numero total de strings (nombres) que hay en el array.
+	};
+	
 
 
 }
 void main()
 {
-
+	srand(static_cast<unsigned>(time(nullptr))); // el srand de C++ usando la libreria ctime / cast a unsigned por que time necesita un int sin signo
 }
