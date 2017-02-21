@@ -55,7 +55,37 @@ Enemy CreateRandomEnemy() // Retorna un enemigo random
 
 
 }
-void main()
+void main(void)
 {
 	srand(static_cast<unsigned>(time(nullptr))); // el srand de C++ usando la libreria ctime / cast a unsigned por que time necesita un int sin signo
+	const int MAX_ENEMIES{ 5 }; // numero maximo de enemigos quye tendra la array
+	Enemy Enemies[MAX_ENEMIES]; // Inicializado de la array con  el numero maximo de enemigos
+
+	// inicializacion de cada enemigo en la array
+	{
+		int i{ 0 };
+		while (i < MAX_ENEMIES)
+		{
+			Enemies[i] = CreateRandomEnemy();
+			int j{ i - 1 };
+			while (j >= 0)
+			{
+				if (Enemies[i] == Enemies[j]) // compeuva cada enemigo creado con el anterior
+											  // si encuentra uno igual vuelve hacia atras, haciendo desaparecer el enemigo repetido
+				{
+					--i;
+					break;
+				};
+				j--;
+			};
+			i++;
+		}
+	}
+
+	// Print the array of enemies
+	// usando un nuevo for, el for each en otros lenguajes
+	for (auto &Enemy : Enemies) // para cada Enemy de la coleciion Enemies actua
+	{
+		std::cout << Enemy.name << "is a " << Enemy.getEnemyTypeString() << " whose life is " << Enemy.Health << std::endl;
+	}
 }
