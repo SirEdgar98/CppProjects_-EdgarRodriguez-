@@ -6,7 +6,21 @@
 
 enum class Weapon { FISTS, GUN, SHOTGUN, REVOLVER,SNIPER,MACHINE_GUN, MAX };
 //FORWA
-class Zombie;
+class Zombie 
+{
+public:
+	//Atributos
+	int distanceToPlayer; // de 20 a 200
+	float speed;          // de 0.f a 20.f
+	float damange;		  // de 0.f a 20.f
+	int life;			  // de 0 a 100
+
+	Zombie();  //Constructor
+	~Zombie(); // Destructor
+			   //Metodos
+	void attack(Player &);
+	bool isAlive();
+};
 //CLASE DE PLAYER
 class Player
 {
@@ -104,13 +118,26 @@ void main(void)
 {
 	srand(time(nullptr));
 	Player PJ1;
-
+	std::cout << "LIFE: "<<PJ1.life <<"PRECITION: "<< PJ1.precition <<"WEAPON: " << static_cast<int>(PJ1.weapon) << std::endl;
 	const int NUMBER_ZOMBIES = 10;
 	Zombie Zombies[NUMBER_ZOMBIES];
 	bool ZombiesAreAlive;
 
 	do
 	{
+		ZombiesAreAlive = false;
+
+		for (int i = 0; i < NUMBER_ZOMBIES; i++)
+		{
+			if (Zombies[i].isAlive)
+			{
+				PJ1.attack(&Zombies[i]);
+				Zombies[i].attack(PJ1);
+				ZombiesAreAlive = true;
+				std::cout << "LIFE: " << PJ1.life << "PRECITION: " << PJ1.precition << "WEAPON: " << static_cast<int>(PJ1.weapon) << std::endl;
+				std::cout <<"DAMANGE: "<< Zombies[i].damange <<"DISTANCE: "<< Zombies[i].distanceToPlayer <<"SPEED: "<< Zombies[i].speed <<"LIFE: "<< Zombies[i].life << std::endl;
+			}
+		}
 
 	} while (Player::isAlive || Zombie::isAlive);
 
