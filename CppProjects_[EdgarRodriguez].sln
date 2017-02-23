@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppProjects_[EdgarRodriguez
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RandomEnemiGenerator", "RandomEnemiGenerator\RandomEnemiGenerator.vcxproj", "{C2D85A6C-4AA9-494A-AFB7-35BC0D258D11}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheWalkingDead", "TheWalkingDead\TheWalkingDead.vcxproj", "{03C19746-BC74-44C5-9F7E-B44C4A53D51C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{C2D85A6C-4AA9-494A-AFB7-35BC0D258D11}.Release|x64.Build.0 = Release|x64
 		{C2D85A6C-4AA9-494A-AFB7-35BC0D258D11}.Release|x86.ActiveCfg = Release|Win32
 		{C2D85A6C-4AA9-494A-AFB7-35BC0D258D11}.Release|x86.Build.0 = Release|Win32
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Debug|x64.ActiveCfg = Debug|x64
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Debug|x64.Build.0 = Debug|x64
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Debug|x86.ActiveCfg = Debug|Win32
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Debug|x86.Build.0 = Debug|Win32
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Release|x64.ActiveCfg = Release|x64
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Release|x64.Build.0 = Release|x64
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Release|x86.ActiveCfg = Release|Win32
+		{03C19746-BC74-44C5-9F7E-B44C4A53D51C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
