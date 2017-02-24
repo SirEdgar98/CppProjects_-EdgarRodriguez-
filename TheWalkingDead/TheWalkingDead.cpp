@@ -4,6 +4,7 @@
 
 
 
+
 enum class Weapon { FISTS, GUN, SHOTGUN, REVOLVER,SNIPER,MACHINE_GUN, MAX };
 //FORWA
 class Zombie 
@@ -41,7 +42,7 @@ Player::Player():weapon(static_cast<Weapon>(rand()%static_cast<int>(Weapon::MAX)
 {
 }
 //ATTAQUE DEL PLYER
-void Player::attack(Zombie  &ZOMB) 
+void Player::attack(Zombie  &ZOMB)
 {
 		ZOMB.life -= (static_cast<int>(weapon))*precition;
 }
@@ -81,7 +82,7 @@ public:
 
 };
 //CONSTRUCTOR DEL ZOMBIE
-Zombie::Zombie():distanceToPlayer(rand() % 200),speed((rand() % 21)/1.0),damange((rand() % 21) / 1.0),life(rand() % 101)
+Zombie::Zombie() :distanceToPlayer (rand() % 200), speed((rand() % 21) / 1.0), damange((rand() % 21) / 1.0), life(rand() % 101)
 {
 }
 //ATAQUE DEL ZOMBIE
