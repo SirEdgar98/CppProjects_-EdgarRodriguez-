@@ -5,8 +5,8 @@
 
 
 enum class Weapon { FISTS, GUN, SHOTGUN, REVOLVER,SNIPER,MACHINE_GUN, MAX };
-
-std::ostream& operator<< (std::ostream &os, const Weapon &weapon)
+// Demasiado para nosotros XD, se queda comentado
+/*std::ostream& operator<< (std::ostream &os, const Weapon &weapon)
 {
 	switch (Weapon)
 	{
@@ -17,7 +17,7 @@ std::ostream& operator<< (std::ostream &os, const Weapon &weapon)
 	case Weapon::MACHINE_GUN:	return os << "Machine Gun";
 	default:					return os << "Fists";
 	}
-}
+}*/
 //FORWARD DECLARATION, ya que el codigo se mira del forma secuencial.
 class Zombie;
 
@@ -115,7 +115,7 @@ void main(void)
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	Player PJ1;
-	std::cout << "LIFE: "<<PJ1.life <<"PRECITION: "<< PJ1.precition <<"WEAPON: " << PJ1.weapon << std::endl;
+	std::cout << "LIFE: "<<PJ1.life <<"PRECITION: "<< PJ1.precition <<"WEAPON: " << static_cast<int>(PJ1.weapon) << std::endl;
 	const int NUMBER_ZOMBIES{ 10 };
 	Zombie Zombies[NUMBER_ZOMBIES];
 
