@@ -62,7 +62,7 @@ public:
 	Zombie();  //Constructor
 	~Zombie(); // Destructor
 	//Metodos
-	void attack(Player &);
+	void attack(Player &player);
 	bool isAlive();
 
 };
@@ -112,19 +112,24 @@ bool Zombie::isAlive()
 
 void main(void)
 {
-	srand(time(nullptr));
+	srand(static_cast<unsigned>(time(nullptr)));
+
 	Player PJ1;
-	std::cout << "LIFE: "<<PJ1.life <<"PRECITION: "<< PJ1.precition <<"WEAPON: " << static_cast<int>(PJ1.weapon) << std::endl;
-	const int NUMBER_ZOMBIES = 10;
+	std::cout << "LIFE: "<<PJ1.life <<"PRECITION: "<< PJ1.precition <<"WEAPON: " << PJ1.weapon << std::endl;
+	const int NUMBER_ZOMBIES{ 10 };
 	Zombie Zombies[NUMBER_ZOMBIES];
+
+	std::cout << "ZOMBIES ARE COMING!" << std::endl;
+
 	bool ZombiesAreAlive;
 
 	do
 	{
 		ZombiesAreAlive = false;
-
-		for (int i = 0; i < NUMBER_ZOMBIES; i++)
+		std::cout << "LIFE OF PLAYER: " << PJ1.life << std::endl;
+		for (int i{ 0 }; i < NUMBER_ZOMBIES; i++)
 		{
+			std::cout << "Zombie" << i << "LIFE: " << Zombies[i].life << "DISTANCE: " << Zombies[i].distanceToPlayer << "SPEED: " << Zombies[i].speed << "DAMANGE: " << Zombies[i].damange << std::endl;
 			if (Zombies[i].isAlive)
 			{
 				PJ1.attack(Zombies[i]);
@@ -135,6 +140,15 @@ void main(void)
 			}
 		}
 
-	} while (Player::isAlive || Zombie::isAlive);
+	} while (Player::isAlive && Zombie::isAlive);
+
+	if (ZombiesAreAlive)
+	{
+		std::cout << "GAME OVER; ZOMBIES WIN!" << std::endl;
+	}
+	else
+	{
+		std::cout << "GAME OVER; PLAYER WINS!" << std::endl;
+	}
 
 }
