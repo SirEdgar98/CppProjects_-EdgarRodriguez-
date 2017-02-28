@@ -30,43 +30,23 @@ public:
 	float precition;     // de 0.f a 1.f
 	int life;		     // de 0 a 100
 
-	Player();    //constructor
+	Player();    // Constructor
 	~Player();	 // Destructor
 
 	//Metodos
-	void attack(Zombie &); 
+	void attack(Zombie &zombie); 
 	bool isAlive();
 };
 
 //CONSTRUCTOR DEL PLAYER
-Player::Player():weapon(static_cast<Weapon>(rand()%static_cast<int>(Weapon::MAX))),precition((rand()% 10) / 10.0),life(rand() % 101)
-{
-}
-
-//ATTAQUE DEL PLYER
-void Player::attack(Zombie  &ZOMB) // sino quando llega aqui, sin la forward decalration, no detectaraia a la classe zombie
-{
-		ZOMB.life -= (static_cast<int>(weapon))*precition;
-}
-
-//COMPROBADOR DE VIDA DEL PLAYER
-bool Player::isAlive()
-{
-	if (life <= 0)
-	{
-		return false;
-	}
-	else 
-	{
-		return true;
-	}
-}
+Player::Player() :
+	weapon(static_cast<Weapon>(rand() % static_cast<int>(Weapon::MAX))), precition((rand() % 10) / 10.f), life(100)
+	{};
 
 //DESTRUCTOR DEL PLAYER ( SOLO HACE FALTA SI SE USA MEMORIA DINAMICA, PARA SALVAR MEMORIA)
 Player::~Player()
 {
 }
-
 
 
 //CLASE ZOMBIE
@@ -92,12 +72,30 @@ Zombie::Zombie():distanceToPlayer(rand() % 200),speed((rand() % 21)/1.0),damange
 {
 }
 
+//DESTRUCTOR DEL ZOMBIE
+Zombie::~Zombie()
+{
+}
+
+
+//ATTAQUE DEL PLYER
+void Player::attack(Zombie  &zombie) // sino quando llega aqui, sin la forward decalration, no detectaraia a la classe zombie
+{
+	zombie.life -= static_cast<int>(static_cast<int>(weapon) * precition);
+}
+
+//COMPROBADOR DE VIDA DEL PLAYER
+bool Player::isAlive()
+{
+	return life > 0;
+}
+
 //ATAQUE DEL ZOMBIE
 void Zombie::attack(Player &PJ1)
 {
 	if (distanceToPlayer <= 0)
 	{
-		PJ1.life -= damange;
+		PJ1.life -= static_cast<int>(damange);
 	}
 	else if (Zombie::distanceToPlayer > 0)
 	{
@@ -108,19 +106,7 @@ void Zombie::attack(Player &PJ1)
 //COMPROBADOR DE VIDA DEL ZOMBIE
 bool Zombie::isAlive()
 {
-	if (life <= 0)
-	{
-		return false;
-	}
-	else
-	{
-		return true;
-	}
-}
-
-//DESTRUCTOR DEL ZOMBIE
-Zombie::~Zombie()
-{
+	return life > 0;
 }
 
 
@@ -141,9 +127,9 @@ void main(void)
 		{
 			if (Zombies[i].isAlive)
 			{
-				PJ1.attack(&Zombies[i]);
+				PJ1.attack(Zombies[i]);
 				Zombies[i].attack(PJ1);
-				ZombiesAreAlive = true;
+	 			ZombiesAreAlive = true;
 				std::cout << "LIFE: " << PJ1.life << "PRECITION: " << PJ1.precition << "WEAPON: " << static_cast<int>(PJ1.weapon) << std::endl;
 				std::cout <<"DAMANGE: "<< Zombies[i].damange <<"DISTANCE: "<< Zombies[i].distanceToPlayer <<"SPEED: "<< Zombies[i].speed <<"LIFE: "<< Zombies[i].life << std::endl;
 			}
