@@ -5,46 +5,50 @@
 
 
 enum class Weapon { FISTS, GUN, SHOTGUN, REVOLVER,SNIPER,MACHINE_GUN, MAX };
-//FORWA
-class Zombie 
-{
-public:
-	//Atributos
-	int distanceToPlayer; // de 20 a 200
-	float speed;          // de 0.f a 20.f
-	float damange;		  // de 0.f a 20.f
-	int life;			  // de 0 a 100
 
-	Zombie();  //Constructor
-	~Zombie(); // Destructor
-			   //Metodos
-	void attack(Player &);
-	bool isAlive();
-};
+std::ostream& operator<< (std::ostream &os, const Weapon &weapon)
+{
+	switch (Weapon)
+	{
+	case Weapon::GUN:			return os << "Gun";
+	case Weapon::SHOTGUN:		return os << "Shotgun";
+	case Weapon::REVOLVER:		return os << "Revlover";
+	case Weapon::SNIPER:		return os << "Sniper";
+	case Weapon::MACHINE_GUN:	return os << "Machine Gun";
+	default:					return os << "Fists";
+	}
+}
+//FORWARD DECLARATION, ya que el codigo se mira del forma secuencial.
+class Zombie;
+
 //CLASE DE PLAYER
 class Player
 {
 public:
 	//Atributos
-	Weapon weapon; // de FISITS A MACHINE_GUN
-	float precition;   // de 0.f a 1.f
-	int life;		   // de 0 a 100
+	Weapon weapon;		 // de FISITS A MACHINE_GUN
+	float precition;     // de 0.f a 1.f
+	int life;		     // de 0 a 100
 
 	Player();    //constructor
 	~Player();	 // Destructor
+
 	//Metodos
 	void attack(Zombie &); 
 	bool isAlive();
 };
+
 //CONSTRUCTOR DEL PLAYER
 Player::Player():weapon(static_cast<Weapon>(rand()%static_cast<int>(Weapon::MAX))),precition((rand()% 10) / 10.0),life(rand() % 101)
 {
 }
+
 //ATTAQUE DEL PLYER
-void Player::attack(Zombie  &ZOMB) 
+void Player::attack(Zombie  &ZOMB) // sino quando llega aqui, sin la forward decalration, no detectaraia a la classe zombie
 {
 		ZOMB.life -= (static_cast<int>(weapon))*precition;
 }
+
 //COMPROBADOR DE VIDA DEL PLAYER
 bool Player::isAlive()
 {
@@ -57,10 +61,12 @@ bool Player::isAlive()
 		return true;
 	}
 }
-//DESTRUCTOR DEL PLAYER
+
+//DESTRUCTOR DEL PLAYER ( SOLO HACE FALTA SI SE USA MEMORIA DINAMICA, PARA SALVAR MEMORIA)
 Player::~Player()
 {
 }
+
 
 
 //CLASE ZOMBIE
@@ -80,10 +86,12 @@ public:
 	bool isAlive();
 
 };
+
 //CONSTRUCTOR DEL ZOMBIE
 Zombie::Zombie():distanceToPlayer(rand() % 200),speed((rand() % 21)/1.0),damange((rand() % 21) / 1.0),life(rand() % 101)
 {
 }
+
 //ATAQUE DEL ZOMBIE
 void Zombie::attack(Player &PJ1)
 {
@@ -96,6 +104,7 @@ void Zombie::attack(Player &PJ1)
 		distanceToPlayer--;
 	}
 }
+
 //COMPROBADOR DE VIDA DEL ZOMBIE
 bool Zombie::isAlive()
 {
@@ -108,6 +117,7 @@ bool Zombie::isAlive()
 		return true;
 	}
 }
+
 //DESTRUCTOR DEL ZOMBIE
 Zombie::~Zombie()
 {
