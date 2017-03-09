@@ -4,6 +4,7 @@
 
 
 
+
 enum class Weapon { FISTS, GUN, SHOTGUN, REVOLVER,SNIPER,MACHINE_GUN, MAX };
 // Demasiado para nosotros XD, se queda comentado
 /*std::ostream& operator<< (std::ostream &os, const Weapon &weapon)
@@ -39,11 +40,27 @@ public:
 };
 
 //CONSTRUCTOR DEL PLAYER
-Player::Player() :
-	weapon(static_cast<Weapon>(rand() % static_cast<int>(Weapon::MAX))), precition((rand() % 10) / 10.f), life(100)
-	{};
-
-//DESTRUCTOR DEL PLAYER ( SOLO HACE FALTA SI SE USA MEMORIA DINAMICA, PARA SALVAR MEMORIA)
+Player::Player():weapon(static_cast<Weapon>(rand()%static_cast<int>(Weapon::MAX))),precition((rand()% 10) / 10.0),life(rand() % 101)
+{
+}
+//ATTAQUE DEL PLYER
+void Player::attack(Zombie  &ZOMB) 
+{
+		ZOMB.life -= (static_cast<int>(weapon))*precition;
+}
+//COMPROBADOR DE VIDA DEL PLAYER
+bool Player::isAlive()
+{
+	if (life <= 0)
+	{
+		return false;
+	}
+	else 
+	{
+		return true;
+	}
+}
+//DESTRUCTOR DEL PLAYER
 Player::~Player()
 {
 }
@@ -68,7 +85,7 @@ public:
 };
 
 //CONSTRUCTOR DEL ZOMBIE
-Zombie::Zombie():distanceToPlayer(rand() % 200),speed((rand() % 21)/1.0),damange((rand() % 21) / 1.0),life(rand() % 101)
+Zombie::Zombie() :distanceToPlayer (rand() % 200), speed((rand() % 21) / 1.0), damange((rand() % 21) / 1.0), life(rand() % 101)
 {
 }
 
