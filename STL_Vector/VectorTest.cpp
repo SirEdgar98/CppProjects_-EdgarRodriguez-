@@ -80,11 +80,7 @@ void main()
 
 	std::vector<Personas>v6({ Man1,Man2,Girl1 });
 
-
-	std::vector AddVectors(std::vector v1, std::vector v2)
-	{
-
-	}
+ 
 }
 
-
+
