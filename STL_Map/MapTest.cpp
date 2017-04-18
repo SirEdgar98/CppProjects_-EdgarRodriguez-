@@ -76,11 +76,8 @@ void main(void)
 	for (auto it = Persons1.begin(); it != Persons1.end(); ++it) 
 	{
 		std::cout << it->first << "=>" << it->second.name << std::endl;
-
-
-
-
 	}
 
+	
 
 }
