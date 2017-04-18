@@ -16,8 +16,9 @@ void main()
 	for (auto it = mymap.begin(); it != mymap.end(); i++)
 	{
 		std::cout << "" << it->first << ":" << it->second << std::endl;
-
 	}
+
+
 
 
 
