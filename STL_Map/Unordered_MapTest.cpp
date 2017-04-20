@@ -13,7 +13,7 @@ void main()
 	//Imprimir el unordered_Map con iteradores
 
 	std::cout << "MyMap cointains:" << std::endl;
-	for (auto it = mymap.begin(); it != mymap.end(); i++)
+	for (auto it = mymap.begin(); it != mymap.end(); it++)
 	{
 		std::cout << "" << it->first << ":" << it->second << std::endl;
 	}
