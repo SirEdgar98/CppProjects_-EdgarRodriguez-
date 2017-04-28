@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-
+/*
 
 
 void main()
@@ -31,7 +31,9 @@ void main()
 	//Recorriendo los elementos usando acceso directo con el operador[]
 	for (unsigned i = 0; i < d3.size(); i++) {
 		std::cout << d3[i] << "-";
-	};	std::deque<int> d6;
+	};
+
+	std::deque<int> d6;
 	//Set some initial values:
 	for (int i = 1; i < 6; i++) d6.push_back(i); // 1 2 3 4 5 
 
@@ -46,7 +48,14 @@ void main()
 
 	std::vector<int> myvector(2, 30);
 	d6.insert(it, myvector.begin(), myvector.end());
-	// 1 2 30 30 20 20 10 2 3 4 5	std::cout << "d6 contains: " << std::endl;	for (it = d6.begin(); it != d6.end(); it++)	{		std::cout << ' ' << *it;	}
+	// 1 2 30 30 20 20 10 2 3 4 5
+
+	std::cout << "d6 contains: " << std::endl;
+	for (it = d6.begin(); it != d6.end(); it++)
+	{
+		std::cout << ' ' << *it;
+	}
+
 
 
 	//////////////////////////////////////////////////////////////////////////
@@ -102,15 +111,21 @@ void main()
 	std::priority_queue<persona, std::vector<persona>, persona> q3;
 	persona p1 = { "Pepito",21 };
 	persona p2 = { "Juanito",23 };
-	persona p4 = { "Maria",40 };	q3.push(p1);
+	persona p4 = { "Maria",40 };
+
+	q3.push(p1);
 	q3.push(p2);
 	q3.push(p4);
-	std::cout << "Elementos de persona cola de prioridad:";	while (!q3.empty())
+	std::cout << "Elementos de persona cola de prioridad:";
+
+	while (!q3.empty())
 	{
 		std::cout << q3.top().name << std::endl;
 			q3.pop();
-	}
+	}
+
 
 }
+*/
 
-
+
