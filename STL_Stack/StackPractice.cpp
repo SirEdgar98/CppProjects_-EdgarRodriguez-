@@ -15,7 +15,7 @@ std::stack<int> SuperMerge(std::stack<int> s1, std::stack<int> s2)
 {
 
 	std::vector<int> FirstMerge;
-	while (!s2.empty || !s2.empty())
+	while (!s2.empty() || !s2.empty())
 	{
 		FirstMerge.push_back(s1.top());
 		FirstMerge.push_back(s2.top());
@@ -57,7 +57,7 @@ std::queue<int> tranformToQ (std::stack<int> s1)
 {
 	std::queue<int> QueueToStack;
 	std::stack<int> S1Copy(s1);
-	while (!S1Copy.empty)
+	while (!S1Copy.empty())
 	{
 		QueueToStack.push(S1Copy.top());
 		S1Copy.pop();
@@ -95,6 +95,8 @@ void main()
 	Result = putHat(ST1, ST2);
 
 	std::stack < std::string > StackCopy(Result);
+
+	std::stack < int > StackCopy2(SuperMerge(s1, s2));
 
 	while (!StackCopy.empty())
 	{
