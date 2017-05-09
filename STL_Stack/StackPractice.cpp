@@ -6,11 +6,6 @@
 #include<string>
 #include<queue>
 
-bool comaper(int i, int j)
-{
-	return i > j;
-}
-
 std::stack<int> SuperMerge(std::stack<int> s1, std::stack<int> s2)
 {
 
@@ -24,15 +19,13 @@ std::stack<int> SuperMerge(std::stack<int> s1, std::stack<int> s2)
 	}
 
 	std::sort(FirstMerge.begin(), FirstMerge.end());
-	std::stack<int> polla;
+	std::stack<int> S1;
 	for (auto i = FirstMerge.begin(); i != FirstMerge.end(); ++i)
 	{
-		polla.push(*i);
+		S1.push(*i);
 	}
-	return polla;
+	return S1;
 }
-
-
 
 std::stack<std::string> putHat(std::stack<std::string> s1, std::stack<std::string>s2)
 {
@@ -64,8 +57,6 @@ std::queue<int> tranformToQ (std::stack<int> s1)
 	}
 	return QueueToStack;
 }
-
-
 
 
 void main() 
