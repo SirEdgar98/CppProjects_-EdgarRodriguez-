@@ -1,7 +1,10 @@
+/*
 #include<list>
 #include<iostream>
 void main()
+
 { 
+	
 	std::list<int> l1({ 1,2,3,4,5 });
 	std::list<int> l2(l1);
 	std::list<int> l3;
@@ -28,5 +31,6 @@ void main()
 			std::cout << ' ' << *it;
 				//Imprime 13 42 65 23 75
 			
-
 }
+*/
+
