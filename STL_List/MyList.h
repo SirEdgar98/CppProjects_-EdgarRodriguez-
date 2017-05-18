@@ -11,6 +11,7 @@ class MyList
 	node *first;
 	node *last;
 	
+private:
 	int numberNodes;
 
 public:
@@ -27,9 +28,9 @@ public:
 
 	int front();						//front
 	int back();							//Back
-	void push_front(int data);					//push_front
+	void push_front(int data);			//push_front
 	void pop_front();					//ppp_front
-	void push_back( int data);					//push_front
+	void push_back( int data);			//push_front
 	void pop_back();					//pop_back
 	int size();							//size
 	bool isEmpty();						//isEmpty

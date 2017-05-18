@@ -8,6 +8,7 @@ MyList::MyList()
 	last = nullptr;
 	numberNodes = 0;
 }
+
 //Constructor por copia
 MyList::MyList(MyList & myList)
 {
